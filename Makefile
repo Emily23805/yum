@@ -22,22 +22,22 @@ subdirs:
 	for d in $(SUBDIRS); do make PYTHON=$(PYTHON) -C $$d; [ $$? = 0 ] || exit 1 ; done
 
 install:
-	mkdir -p $(DESTDIR)/usr/share/yum-cli
+	mkdir -p /root/linux/usr/share/yum-cli
 	for p in $(PYFILES) ; do \
-		install -m 644 $$p $(DESTDIR)/usr/share/yum-cli/$$p; \
+		install -m 644 $$p /root/linux/usr/share/yum-cli/$$p; \
 	done
-	chmod 755 $(DESTDIR)/usr/share/yum-cli/completion-helper.py
-	mv $(DESTDIR)/usr/share/yum-cli/yum-updatesd.py $(DESTDIR)/usr/share/yum-cli/yumupd.py
-	$(PYTHON) -c "import compileall; compileall.compile_dir('$(DESTDIR)/usr/share/yum-cli', 1, '/usr/share/yum-cli', 1)"
+	chmod 755 /root/linux/usr/share/yum-cli/completion-helper.py
+	mv /root/linux/usr/share/yum-cli/yum-updatesd.py /root/linux/usr/share/yum-cli/yumupd.py
+	$(PYTHON) -c "import compileall; compileall.compile_dir('/root/linux/usr/share/yum-cli', 1, '/usr/share/yum-cli', 1)"
 
-	mkdir -p $(DESTDIR)/usr/bin $(DESTDIR)/usr/sbin
-	install -m 755 bin/yum.py $(DESTDIR)/usr/bin/yum
-	install -m 755 bin/yum-updatesd.py $(DESTDIR)/usr/sbin/yum-updatesd
+	mkdir -p /root/linux/usr/bin /root/linux/usr/sbin
+	install -m 755 bin/yum.py /root/linux/usr/bin/yum
+	install -m 755 bin/yum-updatesd.py /root/linux/usr/sbin/yum-updatesd
 
-	mkdir -p $(DESTDIR)/var/cache/yum
-	mkdir -p $(DESTDIR)/var/lib/yum
+	mkdir -p /root/linux/var/cache/yum
+	mkdir -p /root/linux/var/lib/yum
 
-	for d in $(SUBDIRS); do make PYTHON=$(PYTHON) DESTDIR=`cd $(DESTDIR); pwd` UNITDIR=$(UNITDIR) INIT=$(INIT) -C $$d install; [ $$? = 0 ] || exit 1; done
+	for d in $(SUBDIRS); do make PYTHON=$(PYTHON) DESTDIR=`cd /root/linux; pwd` UNITDIR=$(UNITDIR) INIT=$(INIT) -C $$d install; [ $$? = 0 ] || exit 1; done
 
 apidocs:
 	make -C docs/sphinxdocs html
