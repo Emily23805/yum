@@ -2,8 +2,8 @@
 Yum - an automatic updater and installer for rpm-based systems
 -------------------------------------
 
-Included programs:
-/usr/bin/yum		Main program
+포함된 프로그램:
+/usr/bin/yum	  메인프로그램
 
 Basic usage description follows:
 
@@ -32,4 +32,6 @@ wiki: http://yum.baseurl.org/wiki
 3.2.X Branch - yum-3_2_X
       Starting commit is roughly: a3c91d7f6a15f31a42d020127b2da2877dfc137d
          E.g. git diff a3c91d7f6a15f31a42d020127b2da2877dfc137d
-
+	 빌드방법 : yum 디렉토리로 들어간다 그다음 make clean 을 친후 make install 을 친다
+	 자신의 호스트 pc 에 yum 을 설치하고싶다면 https://github.com/rpm-software-management/yum 여기서 직접 다운받아서 컴파일하면된다
+	 이 yum 은 /root/linux 에 만들어지며 이거는 리눅스를 만들때 사용되는 빌드프로그램이다
